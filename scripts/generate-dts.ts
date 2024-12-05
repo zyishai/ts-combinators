@@ -5,7 +5,7 @@ import signale from 'signale';
 
 async function generateDts() {
   try {
-    await execa('yarn', ['tsc', '--project', 'tsconfig.build.json']);
+    await execa('tsc', ['--project', 'tsconfig.build.json']);
     await fs.copy(
       path.join(process.cwd(), 'dist/types/index.d.ts'),
       path.join(process.cwd(), 'dist/types/index.d.mts')

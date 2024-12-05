@@ -64,13 +64,13 @@ async function release() {
     error: 'Failed to install fresh dependencies',
   });
 
-  await run(execa('yarn', ['run', 'clean']), {
+  await run(execa('npm', ['run', 'clean']), {
     info: 'Removing dist directory',
     success: 'dist directory has been removed',
     error: 'Failed to remove dist directory',
   });
 
-  await run(execa('yarn', ['run', 'build']), {
+  await run(execa('npm', ['run', 'build']), {
     info: 'Building the package',
     success: 'The package has been built',
     error: 'Failed to build the package',
@@ -80,14 +80,7 @@ async function release() {
 
   if (publish) {
     await run(
-      execa('yarn', [
-        'npm',
-        'publish',
-        '--access',
-        'public',
-        '--tag',
-        versionStage ? 'next' : 'latest',
-      ]),
+      execa('npm', ['publish', '--access', 'public', '--tag', versionStage ? 'next' : 'latest']),
       {
         info: 'Publishing the package to npm',
         success: 'The package has been published to npm',

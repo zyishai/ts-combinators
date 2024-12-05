@@ -1,26 +1,26 @@
 {
-  "name": "@rtivital/ts-package-template",
-  "description": "A template for TypeScript packages",
-  "packageManager": "yarn@4.3.1",
-  "version": "0.5.0",
+  "name": "ts-combinators",
+  "description": "Point-free combinators written in TypeScript",
+  "version": "0.1.0",
   "type": "module",
-  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "author": "Yishai Zehavi <zehaviyishai@gmail.com>",
   "engines": {
     "node": ">=16.6.0"
   },
   "keywords": [
     "typescript",
-    "template"
+    "functional programming",
+    "combinators"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rtivital/ts-package-template.git"
+    "url": "git+https://github.com/zyishai/ts-combinators.git"
   },
   "bugs": {
-    "url": "https://github.com/rtivital/ts-package-template/issues"
+    "url": "https://github.com/zyishai/ts-combinators/issues"
   },
-  "homepage": "https://github.com/rtivital/ts-package-template#readme",
+  "homepage": "https://github.com/zyishai/ts-combinators#readme",
   "main": "./dist/cjs/index.cjs",
   "types": "./dist/types/index.d.cts",
   "module": "./dist/esm/index.mjs",
@@ -40,12 +40,13 @@
     "clean": "rimraf dist",
     "generate-dts": "esno scripts/generate-dts",
     "build": "rollup -c rollup.config.mjs && npm run generate-dts",
+    "start": "npm run build && node dist/esm/index.mjs",
     "pack:test": "esno scripts/pack-test",
     "prettier:check": "prettier --check \"**/*.{ts,tsx}\"",
     "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
     "lint": "eslint --cache .",
-    "jest": "jest",
+    "jest": "jest --passWithNoTests",
     "test": "npm run prettier:check && npm run typecheck && npm run lint && npm run jest && npm run build && npm run pack:test",
     "release": "npm test && esno scripts/release"
   },
