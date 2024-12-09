@@ -1,7 +1,8 @@
 import { Functor } from './types';
 
 // map :: (a -> b) -> [a] -> [b]
-export const mapArr: <T, K>(f: Functor<T, K>) => (xs: T[]) => K[] = (f) => (xs) => xs.map(f);
+export const mapArr: <T, K>(f: Functor<T, K>) => (xs: T[]) => K[] = (f) => (xs) =>
+  xs.map((item) => f(item));
 
 // filter :: (a -> Bool) -> [a] -> [a]
 export const filterArr: <T>(f: Functor<T, boolean>) => (xs: T[]) => T[] = (f) => (xs) =>
